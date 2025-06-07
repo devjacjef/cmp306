@@ -6,15 +6,16 @@ then handle it
 and return something based on what is required
  */
 
-include 'response.php';
+require 'response.php';
+require 'error.php';
 
-// TODO MAYBE BETTER NAMING
+// TODO Get this class finished and tested 
 class RpcServer
 {
-    // dont need to store body
-    // private response $response;
-
-    // TODO Test this function
+    /**
+     * Function that receives a JSON string from a requset
+     * @return string $request  JSON request as a string
+     */
     private function receiveRequest()
     {
         $body = file_get_contents('php://input');
@@ -22,56 +23,57 @@ class RpcServer
         return $request;
     }
 
-    // todo implement this function
-    public function jsonformatcheck($request) {}
-
-    // todo implement this function
-    public function rpcformatcheck($request)
+    /**
+     * Checks if RPC request is in valid format.
+     * @return int 0 is success, otherwise -1.
+     */
+    public function rpcFormatCheck($request)
     {
         $jsonrpc = $request->jsonrpc;
         $method = $request->method;
         $id = $request->id;
 
         if ($jsonrpc != "2.0") {
-            return 0;
+            return -1;
         }
 
         if ($method == null) {
-            return 0;
+            return -1;
         }
 
         if ($id == null) {
-            return 0;
+            return -1;
         }
 
-        return 1;
+        return 0;
     }
 
-    public function methodparamscheck($method, $params)
-    {
-        // TODO Implement statement.
-        switch ($method) {
-            case "getAllThinkpads":
-                break;
-            case "getThinkPadbyid":
-                break;
-            case "createThinkpad":
-                break;
-            case "deleteThinkpad":
-                break;
-            case "updateThinkpad":
-                break;
-            default:
-                break;
-        }
-    }
-
+    // TODO test this functio
     // TODO Implement this function
     public function handleRequest($request)
     {
-        $response = "Hi";
+        if ($request == null) {
+            $error = new RpcError(-32600, "Request was invalid.");
+            return new RpcResponse(null, $error->getError(), null);
+        }
 
-        return json_encode($response);
+        $method = $request->method;
+        $params = $request->params;
+
+        $jsonrpc = "2.0";
+        $id = $request->id;
+
+        switch ($method) {
+
+            default:
+                
+                break;
+        }
+
+
+        // TODO Check if request is null
+        // TODO Check if request is in correct format
+        // TODO Check the method
     }
 
     // TODO Implement this function
@@ -79,10 +81,9 @@ class RpcServer
     {
         $request = $this->receiveRequest();
 
-        $response = $this->handleRequest($request);
-        // Check request
-        // Handle the request
-        // Return a response
-        return $response;
+        if ($request == null) {
+        }
+
+        echo "hi!";
     }
 }

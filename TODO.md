@@ -20,11 +20,12 @@ author: Jack Jefferson
 - 
 
 ## Server
+
 - Improve handling requests
 - Build Server class
   - Implement functions
   general flow should be: setup class -> get a request -> check request -> check params -> execute
-- Build Response class
+- Get functionality of Server class done and tested!
 
 ## Site
 - Review requirements
