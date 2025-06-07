@@ -15,7 +15,6 @@ author: Jack Jefferson
 # block1
 
 ## Client
-- Improve handling responses
 - Test execute
 - 
 
