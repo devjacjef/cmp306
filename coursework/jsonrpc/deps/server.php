@@ -8,6 +8,7 @@ and return something based on what is required
 
 require 'response.php';
 require 'error.php';
+require 'thinkpads.php':
 
 // TODO Get this class finished and tested 
 class RpcServer
@@ -48,8 +49,10 @@ class RpcServer
         return 0;
     }
 
-    // TODO test this functio
-    // TODO Implement this function
+    /**
+    * Function to handle an incoming request
+    * @param $request Incoming request as a Deserialized JSON string.
+    */
     public function handleRequest($request)
     {
         if ($request == null) {
@@ -64,14 +67,14 @@ class RpcServer
         $id = $request->id;
 
         switch ($method) {
-
+            // TODO implement all the methods
             default:
-                
+                $error = new RpcError(-32601, "Method not found.");
+                return new RpcResponse(null, $error, null);
                 break;
         }
 
 
-        // TODO Check if request is null
         // TODO Check if request is in correct format
         // TODO Check the method
     }
