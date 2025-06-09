@@ -11,8 +11,8 @@ Errors faced:
 - so mainly, just issues with understanding the `php -S localhost` and formatting issues...
  */
 
-require_once 'request.php';
-include __DIR__ . '/../thinkpad.php';
+require_once 'deps/request.php';
+require_once 'deps/thinkpad.php';
 
 class RpcClient
 {
@@ -71,8 +71,8 @@ class RpcClient
 
 // Test
 
-// $thinkpad = new Thinkpad("22", "Thinkpad T41", "Beefy", "./image03.jpg");
-// $request = new Request("createThinkpad", $thinkpad, 510572);
+$thinkpad = new Thinkpad("23", "Thinkpad T42", "Beefy aswell", "./image03.jpg");
+$request = new RpcRequest("createThinkpad", $thinkpad, 510572);
 
-// $client = new Client($request, "http://localhost:8080/index.php");
-// $client->execute();
+$client = new RpcClient($request, "http://localhost:8080/index.php");
+echo $client->execute();

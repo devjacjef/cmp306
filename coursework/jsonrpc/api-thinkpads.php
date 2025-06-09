@@ -1,7 +1,7 @@
 <?php
 
 include("connection.php");
-include("thinkpad.php");
+include("deps/thinkpad.php");
 
 $conn = getDatabaseConnection();
 
