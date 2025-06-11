@@ -1,9 +1,10 @@
 <?php
 
 require 'deps/response.php';
+require 'deps/request.php';
 require 'api-thinkpads.php';
 
-// TODO Bug fixing and testing
+// TODO Testing and Bugfixes
 class RpcServer
 {
     /**
@@ -14,7 +15,7 @@ class RpcServer
     {
         $body = file_get_contents('php://input');
         $request = json_decode($body);
-        return $request;
+        return new RpcRequest($request->method, $request->params, $request->id);
     }
 
     /**
@@ -23,9 +24,11 @@ class RpcServer
      */
     private function rpcFormatCheck($request)
     {
-        $jsonrpc = $request->jsonrpc;
-        $method = $request->method;
-        $id = $request->id;
+        $r = $request->assoc();
+
+        $jsonrpc = $r['jsonrpc'];
+        $method = $r['method'];
+        $id = $r['id'];
 
         if ($jsonrpc != "2.0") {
             return false;
@@ -58,14 +61,15 @@ class RpcServer
             return new RpcResponse(-32700, "The request was in the incorrect format.", null);
         }
 
-        $method = $request->method;
-        $params = $request->params;
+        $r = $request->assoc();
+        
+        $method = $r['method'];
+        $params = json_encode($r['params']);
 
         $jsonrpc = "2.0";
-        $id = $request->id;
+        $id = $r['id'];
 
         switch ($method) {
-            // TODO Test functionality. Possible bugs.           
             case "getAllThinkpads":
                 return new RpcResponse(getAllThinkpads(), null, $id);
                 break;
