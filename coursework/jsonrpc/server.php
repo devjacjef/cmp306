@@ -1,5 +1,13 @@
 <?php
 
+ob_start();
+register_shutdown_function(function () {
+   $output = ob_get_clean();
+   error_log("Output Buffer:\n" . $output);
+   echo $output;
+});
+
+
 require 'deps/response.php';
 require 'deps/request.php';
 require 'api-thinkpads.php';
