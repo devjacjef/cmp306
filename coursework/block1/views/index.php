@@ -1,28 +1,11 @@
 <?php
 
 require __DIR__ . '/partials/header.php';
+require __DIR__ . '/../controller/client.php';
 
-include __DIR__ . '/../model/thinkpad.php';
+$request = new RpcRequest("getAllThinkpads", "", "510572");
+$client = new RpcClient($request, "http://127.0.0.1/cmp306/coursework/jsonrpc/");
 
-/**
-* @TODO Remove this code in the future as this is just a demo to show the model works.
-*/
-$tp = new Thinkpad(
-    1,
-    "Thinkpad T440p",
-    "Military Grade",
-    "image01"
-);
-
-$tp->printModel();
-
-echo $tp->toJson();
-?>
-
-<p>Hello, there!</p>
-
-<?php
+echo $client->execute();
 
 require __DIR__ . '/partials/footer.php';
-
-?>

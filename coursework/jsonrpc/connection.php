@@ -13,7 +13,7 @@ function getDatabaseConnection()
 
 		exit();
 	}
-	echo "Connected to MySQL.";
+	// echo "Connected to MySQL.";
 	return $conn;
 }
 
