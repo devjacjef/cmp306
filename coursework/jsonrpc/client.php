@@ -71,8 +71,8 @@ class RpcClient
 
 // Test
 
-$thinkpad = new Thinkpad("23", "Thinkpad T42", "Beefy aswell", "./image03.jpg");
-$request = new RpcRequest("createThinkpad", $thinkpad, 510572);
+// $thinkpad = new Thinkpad("23", "Thinkpad T42", "Beefy aswell", "./image03.jpg");
+// $request = new RpcRequest("createThinkpad", $thinkpad, 510572);
 
-$client = new RpcClient($request, "http://localhost:8080/index.php");
-echo $client->execute();
+// $client = new RpcClient($request, "http://localhost:8080/index.php");
+// echo $client->execute();

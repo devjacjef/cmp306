@@ -45,10 +45,11 @@ function getAllThinkpads()
         $rows[] = $r;
     }
 
+    echo $rows;
     return json_encode($rows);
 }
 
-function getThinkpadById($id)
+function getThinkpadById(int $id)
 {
     global $conn;
     $stmt = mysqli_stmt_init($conn);
@@ -59,6 +60,7 @@ function getThinkpadById($id)
     mysqli_stmt_execute($stmt);
 
     $result = mysqli_stmt_get_result($stmt);
+  
     $row = mysqli_fetch_assoc($result);
 
     return json_encode($row);
