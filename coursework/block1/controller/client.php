@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 /**
 # Notes for my own understanding
@@ -12,6 +14,7 @@ Errors faced:
  */
 
 require_once 'deps/request.php';
+require_once 'deps/response.php';
 require_once 'deps/thinkpad.php';
 
 class RpcClient
@@ -48,8 +51,23 @@ class RpcClient
       return $ch;
    }
 
+   public function decodeResponse($response)
+   {
+      $res = json_decode($response);
 
-   public function execute(): string
+      $resultItem = json_decode($res->result);
+
+      $something = [];
+
+      foreach ($resultItem as $item) {
+         $something[] = new RpcResponse($item, $res->error, $res->id);
+      }
+
+      return $something;
+   }
+
+
+   public function execute()
    {
       $ch = $this->setup();
       $response = curl_exec($ch);
@@ -59,7 +77,8 @@ class RpcClient
       }
 
       curl_close($ch);
-      return $response;
+
+      return $this->decodeResponse($response);
    }
 
    public function __construct(RpcRequest $request, string $url)
