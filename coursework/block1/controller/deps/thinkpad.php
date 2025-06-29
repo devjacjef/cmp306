@@ -10,18 +10,20 @@ class Thinkpad implements JsonSerializable
    private string $description;
    private string $imageUrl;
    private float $price;
+   private int $stock;
 
    /**
     * Refactor this 
     * https://stevegrunwell.com/blog/factory-methods-json/
     */
-   public function __construct(?int $id, ?string $model, ?string $description, ?string $imageUrl, ?float $price)
+   public function __construct(?int $id, ?string $model, ?string $description, ?string $imageUrl, ?float $price, ?int $stock)
    {
       $this->id = $id;
       $this->model = $model;
       $this->description = $description;
       $this->imageUrl = $imageUrl;
       $this->price = $price;
+      $this->stock = $stock;
    }
 
 
@@ -35,7 +37,7 @@ class Thinkpad implements JsonSerializable
       echo '<p>' . $this->description . '</p>';
       echo '<p>' . $this->imageUrl . '</p>';
       echo '<p>' . $this->price . '</p>';
-      /* TODO add price here*/
+      echo '<p>' . $this->stock . '</p>';
    }
 
    public function jsonSerialize(): mixed
@@ -45,7 +47,8 @@ class Thinkpad implements JsonSerializable
          'model' => $this->model,
          'description' => $this->description,
          'imageUrl' => $this->imageUrl,
-         'price' => $this->price
+         'price' => $this->price,
+         'stock' => $this->stock
       ];
    }
 
@@ -58,7 +61,7 @@ class Thinkpad implements JsonSerializable
    {
       $data = json_decode($json, true);
       /* TODO add price here*/
-      return new self($data['ID'], $data['Model'], $data['Description'], $data['ImageUrl'], $data['Price']);
+      return new self($data['ID'], $data['Model'], $data['Description'], $data['ImageUrl'], $data['Price'], $data['Stock']);
    }
 
    public function getId()
@@ -84,5 +87,10 @@ class Thinkpad implements JsonSerializable
    public function getPrice()
    {
       return $this->price;
+   }
+
+   public function getStock()
+   {
+      return $this->stock;
    }
 }

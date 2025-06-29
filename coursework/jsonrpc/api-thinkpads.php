@@ -11,7 +11,7 @@ function createThinkpad($json)
 
    $thinkpad = Thinkpad::fromJson($json);
 
-   $stmt = $conn->prepare("insert into thinkpads (ID, Model, Description, ImageUrl, Price) values (?, ?, ?, ?, ?)");
+   $stmt = $conn->prepare("insert into thinkpads (ID, Model, Description, ImageUrl, Price, Stock) values (?, ?, ?, ?, ?, ?)");
 
    if (!$stmt) {
       error_log("Prepare failed: " . $conn->error);
@@ -23,8 +23,9 @@ function createThinkpad($json)
    $Description = $thinkpad->getDescription();
    $ImageUrl = $thinkpad->getImageUrl();
    $Price = $thinkpad->getPrice();
+   $Stock = $thinkpad->getStock();
 
-   $stmt->bind_param("isssd", $ID, $Model, $Description, $ImageUrl, $Price);
+   $stmt->bind_param("isssdi", $ID, $Model, $Description, $ImageUrl, $Price, $Stock);
 
    $result = $stmt->execute();
 
@@ -72,7 +73,7 @@ function updateThinkpad($json)
    global $conn;
 
    $thinkpad = Thinkpad::fromJson($json);
-   $stmt = $conn->prepare("UPDATE thinkpads SET Model=?, Description=?, ImageUrl=?, Price=? WHERE ID=?");
+   $stmt = $conn->prepare("UPDATE thinkpads SET Model=?, Description=?, ImageUrl=?, Price=?, Stock=? WHERE ID=?");
 
    if (!$stmt) {
       error_log("Prepare failed: " . $conn->error);
@@ -84,8 +85,9 @@ function updateThinkpad($json)
    $Description = $thinkpad->getDescription();
    $ImageUrl = $thinkpad->getImageUrl();
    $Price = $thinkpad->getPrice();
+   $Stock = $thinkpad->getStock();
 
-   $stmt->bind_param("sssdi", $Model, $Description, $ImageUrl, $Price, $ID);
+   $stmt->bind_param("sssdii", $Model, $Description, $ImageUrl, $Price, $Stock, $ID);
 
    $result = $stmt->execute();
 }

@@ -9,21 +9,23 @@
                   <div class="card-body">
                      <h5 class="card-title"><?= $t->getModel() ?></h5>
                      <p class="card-text"><?= $t->getDescription() ?></p>
-                     <div class="d-flex justify-content-between align-items-center">
-                        <span class="h5 mb-0">£<?= $t->getPrice() ?></span>
-                        <div>
-                           <i class="bi bi-star-fill text-warning"></i>
-                           <i class="bi bi-star-fill text-warning"></i>
-                           <i class="bi bi-star-fill text-warning"></i>
-                           <i class="bi bi-star-fill text-warning"></i>
-                           <i class="bi bi-star-half text-warning"></i>
+                     <?php if ($t->getStock() > 0): ?>
+                        <div class="d-flex justify-content-between align-items-center">
+                           <span class="h5 mb-0">£<?= $t->getPrice() ?></span>
                         </div>
-                     </div>
                   </div>
                   <div class="card-footer d-flex justify-content-between bg-light">
                      <!--IMPLEMENT BUTTON CALL THING-->
                      <button class="btn btn-primary btn-sm">Add to Cart</button>
+                     <span class="h5 mb-0">Stock: <?= $t->getStock() ?></span>
                   </div>
+               <?php else: ?>
+                  <div class="card-footer d-flex justify-content-between bg-light">
+                     <!--IMPLEMENT BUTTON CALL THING-->
+
+                     <span class="h5 mb-0">Out of stock </span>
+                  </div>
+               <?php endif; ?>
                </div>
             </div>
          <?php
