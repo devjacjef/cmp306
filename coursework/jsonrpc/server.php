@@ -82,7 +82,6 @@ class RpcServer
             return new RpcResponse(getAllThinkpads(), null, $id);
             break;
          case "getThinkpadById":
-            error_log("getThinkpadById called with: $params");
             return new RpcResponse(getThinkpadById((int)$params), null, $id);
             break;
          case "createThinkpad":

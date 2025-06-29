@@ -78,7 +78,7 @@ class Thinkpad implements JsonSerializable
 
    public function getImageUrl()
    {
-      return $this->imageUrl;
+      return '/cmp306/coursework/block1/images/' . $this->imageUrl;
    }
 
    public function getPrice()
