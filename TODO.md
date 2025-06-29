@@ -10,25 +10,14 @@ author: Jack Jefferson
 
 # TODO
 
-- review examples and rewrite them to use classes!
-
 # block1
 
-## Client
-- Test execute
-- 
+- Implement user account
+- Add stock to objects
+- Create Product Page
+- Implement Basket
+    - Purchase from basket
 
-## Server
-
-- Improve handling requests
-- Build Server class
-  - Implement functions
-  general flow should be: setup class -> get a request -> check request -> check params -> execute
-- Get functionality of Server class done and tested!
-
-## Site
-- Review requirements
-- admin, index...
 
 ## Report
 

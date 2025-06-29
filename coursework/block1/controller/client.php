@@ -55,9 +55,6 @@ class RpcClient
    {
       $res = json_decode($response);
 
-      echo '<pre>';
-      print_r($response);
-      echo '</pre>';
       $resultItem = json_decode($res->result, true);
 
       $something = [];

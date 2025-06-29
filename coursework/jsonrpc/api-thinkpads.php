@@ -74,7 +74,6 @@ function updateThinkpad($json)
    $thinkpad = Thinkpad::fromJson($json);
    $stmt = $conn->prepare("UPDATE thinkpads SET Model=?, Description=?, ImageUrl=?, Price=? WHERE ID=?");
 
-
    if (!$stmt) {
       error_log("Prepare failed: " . $conn->error);
       return false;
