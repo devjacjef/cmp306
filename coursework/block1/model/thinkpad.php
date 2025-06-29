@@ -10,14 +10,16 @@ class Thinkpad implements JsonSerializable
    private string $description;
    private string $imageUrl;
    private float $price;
+   private int $stock;
 
-   public function __construct(?int $id, ?string $model, ?string $description, ?string $imageUrl, ?float $price)
+   public function __construct(?int $id, ?string $model, ?string $description, ?string $imageUrl, ?float $price, ?int $stock)
    {
       $this->id = $id;
       $this->model = $model;
       $this->description = $description;
       $this->imageUrl = $imageUrl;
       $this->price = $price;
+      $this->stock = $stock;
    }
 
    /**
@@ -30,6 +32,7 @@ class Thinkpad implements JsonSerializable
       echo '<p>' . $this->description . '</p>';
       echo '<p>' . $this->imageUrl . '</p>';
       echo '<p>' . $this->price . '</p>';
+      echo '<p>' . $this->stock . '</p>';
    }
 
    public function jsonSerialize(): mixed
@@ -39,7 +42,8 @@ class Thinkpad implements JsonSerializable
          'name' => $this->model,
          'grade' => $this->description,
          'image' => $this->imageUrl,
-         'price' => $this->price
+         'price' => $this->price,
+         'stock' => $this->stock
       ];
    }
 
@@ -71,5 +75,10 @@ class Thinkpad implements JsonSerializable
    public function getPrice()
    {
       return $this->price;
+   }
+
+   public function getStock()
+   {
+      return $this->stock;
    }
 }
