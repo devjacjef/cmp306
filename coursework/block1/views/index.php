@@ -10,7 +10,7 @@ $response = $client->execute();
 
 $thinkpads = [];
 
-$thinkpad = new Thinkpad(0, "", "", "", 0.00);
+$thinkpad = new Thinkpad(0, "", "", "", 0.00, 0);
 foreach ($response as $r) {
    $thinkpads[] = $thinkpad->fromJson($r->resultJson());
 }
