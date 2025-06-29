@@ -9,13 +9,15 @@ class Thinkpad implements JsonSerializable
    private string $model;
    private string $description;
    private string $imageUrl;
+   private float $price;
 
-   public function __construct(int $id, string $model, string $description, string $imageUrl)
+   public function __construct(?int $id, ?string $model, ?string $description, ?string $imageUrl, ?float $price)
    {
       $this->id = $id;
       $this->model = $model;
       $this->description = $description;
       $this->imageUrl = $imageUrl;
+      $this->price = $price;
    }
 
    /**
@@ -27,15 +29,17 @@ class Thinkpad implements JsonSerializable
       echo '<p>' . $this->model . '</p>';
       echo '<p>' . $this->description . '</p>';
       echo '<p>' . $this->imageUrl . '</p>';
+      echo '<p>' . $this->price . '</p>';
    }
 
    public function jsonSerialize(): mixed
    {
       return [
          'id' => $this->id,
-         'model' => $this->model,
+         'name' => $this->model,
          'description' => $this->description,
-         'imageUrl' => $this->imageUrl
+         'image' => $this->imageUrl,
+         'price' => $this->price
       ];
    }
 
@@ -47,7 +51,7 @@ class Thinkpad implements JsonSerializable
    public static function fromJson(string $json): self
    {
       $data = json_decode($json, true);
-      return new self($data['id'], $data['model'], $data['description'], $data['imageUrl']);
+      return new self($data['id'], $data['model'], $data['description'], $data['imageUrl'], $data['price']);
    }
 
    public function getId()
@@ -68,5 +72,10 @@ class Thinkpad implements JsonSerializable
    public function getImageUrl()
    {
       return $this->imageUrl;
+   }
+
+   public function getPrice()
+   {
+      return $this->price;
    }
 }

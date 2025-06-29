@@ -50,7 +50,7 @@ class RpcRequest implements JsonSerializable
    public function fromJson(string $json): self
    {
       $data = json_decode($json, true);
-      return new self($data['method'], $data['params'], $data['imageUrl']);
+      return new self($data['jsonrpc'], $data['method'], $data['params'], $data['id']);
    }
 
    public function length(): int

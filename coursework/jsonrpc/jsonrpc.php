@@ -18,7 +18,7 @@ require_once 'deps/request.php';
 $request = new RpcRequest("getThinkpadById", 22, "510572");
 
 // $request = new RpcRequest("deleteThinkpad", 22, "510572");
-$client = new RpcClient($request, "http://localhost:8080/index.php");
+$client = new RpcClient($request, "http://localhost/index.php");
 
 // Forgot to echo the output cause im a numpty originally...
 echo $client->execute();
