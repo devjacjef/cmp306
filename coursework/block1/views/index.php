@@ -21,6 +21,7 @@ foreach ($response as $r) {
 
 /* $client = new RpcClient($request, "http://127.0.0.1/cmp306/coursework/jsonrpc/"); */
 
+require 'partials/login.php';
 include 'partials/card.php';
 ?>
 

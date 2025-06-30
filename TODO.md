@@ -13,10 +13,10 @@ author: Jack Jefferson
 # block1
 
 - Implement user account
-- **Add stock to objects**
 - Create Product Page
 - Implement Basket
     - Purchase from basket
+    - Handling payment gateway
 
 
 ## Report

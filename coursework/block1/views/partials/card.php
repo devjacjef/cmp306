@@ -8,7 +8,10 @@
                   <img src="<?= $t->getImageUrl() ?>" class="card-img-top" alt="Product Image">
                   <div class="card-body">
                      <h5 class="card-title"><?= $t->getModel() ?></h5>
-                     <p class="card-text"><?= $t->getDescription() ?></p>
+                     <p class="card-text"><?= $t->getDescription() ?>
+                     </p>
+                     <a href="#">For more details, click here!</a>
+
                      <?php if ($t->getStock() > 0): ?>
                         <div class="d-flex justify-content-between align-items-center">
                            <span class="h5 mb-0">£<?= $t->getPrice() ?></span>
@@ -16,7 +19,7 @@
                   </div>
                   <div class="card-footer d-flex justify-content-between bg-light">
                      <!--IMPLEMENT BUTTON CALL THING-->
-                     <button class="btn btn-primary btn-sm">Add to Cart</button>
+                     <a class="btn btn-primary btn-sm">Buy Now</a>
                      <span class="h5 mb-0">Stock: <?= $t->getStock() ?></span>
                   </div>
                <?php else: ?>
