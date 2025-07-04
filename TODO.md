@@ -13,6 +13,7 @@ author: Jack Jefferson
 # block1
 
 - Implement user account
+    - Implement login/logout for account
 - Create Product Page
 - Implement Basket
     - Purchase from basket

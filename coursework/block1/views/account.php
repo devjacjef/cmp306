@@ -1,3 +1,9 @@
+<?php
+
+require __DIR__ . '/../controller/account.php';
+
+?>
+
 <form class="my-4 p-4 card container w-25">
    <div class="form-group">
       <label for="exampleInputEmail1">Username</label>

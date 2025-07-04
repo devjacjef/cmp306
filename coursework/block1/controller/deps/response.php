@@ -11,7 +11,7 @@ class RpcResponse implements JsonSerializable
    private $error; // this is going to store an assoc array
    private $id;
 
-   public function __construct($result = null,  $error = null, $id)
+   public function __construct($result = null,  $error = null, $id = null)
    {
       $this->jsonrpc = "2.0";
       $this->result = $result;

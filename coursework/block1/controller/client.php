@@ -15,7 +15,7 @@ Errors faced:
 
 require_once 'deps/request.php';
 require_once 'deps/response.php';
-require_once 'deps/thinkpad.php';
+require_once __DIR__ . '/../model/thinkpad.php';
 
 class RpcClient
 {

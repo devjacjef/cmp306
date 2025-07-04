@@ -52,6 +52,12 @@ class Thinkpad implements JsonSerializable
       return json_encode($this);
    }
 
+   public static function fromJson(string $json): self
+   {
+      $data = json_decode($json, true);
+      return new self($data['ID'], $data['Model'], $data['Description'], $data['ImageUrl'], $data['Price'], $data['Stock']);
+   }
+
    public function getId()
    {
       return $this->id;
@@ -69,7 +75,7 @@ class Thinkpad implements JsonSerializable
 
    public function getImageUrl()
    {
-      return $this->imageUrl;
+      return '/cmp306/coursework/block1/images/' . $this->imageUrl;
    }
 
    public function getPrice()
