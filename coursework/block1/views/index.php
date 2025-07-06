@@ -15,12 +15,6 @@ foreach ($response as $r) {
    $thinkpads[] = $thinkpad->fromJson($r->resultJson());
 }
 
-/* $thinkpad = new Thinkpad("23", "Thinkpad T42", "Beefy aswell", "./image03.jpg", 19.99); */
-/* $request = new RpcRequest("createThinkpad", $thinkpad, 510572); */
-
-
-/* $client = new RpcClient($request, "http://127.0.0.1/cmp306/coursework/jsonrpc/"); */
-
 require 'partials/login.php';
 include 'partials/card.php';
 ?>

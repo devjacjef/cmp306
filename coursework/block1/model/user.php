@@ -6,7 +6,7 @@ class User implements JsonSerializable
    private string $username;
    private string $password;
 
-   public function __construct(?int $id = null, string $username, string $password)
+   public function __construct(int $id, string $username, string $password)
    {
       $this->id = $id;
       $this->username = $username;

@@ -34,13 +34,14 @@ class Account
          if ($username == $user['Username']) {
             if ($hash == $user['Password']) {
                $u = json_encode($user);
-               $_SESSION['user'] = User::fromJson($u);
+               $_SESSION['user'] = [
+                  'id' => $user['ID'],
+                  'username' => $user['Username']
+               ];
                break;
             }
          }
       }
-
-      // TODO Implement this function.
    }
 
    public static function logout()
