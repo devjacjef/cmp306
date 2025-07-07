@@ -25,6 +25,8 @@ class Account
       return $rows;
    }
 
+   public static function createAccount(string $username, string $password, string $confirmPassword) {}
+
    public static function login(string $username, string $password)
    {
       $users = self::getAllUsers();

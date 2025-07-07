@@ -10,6 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       exit;;
    }
 
+   if (isset($_POST['signup'])) {
+      header('Location: ' . 'account/signup.php');
+   }
+
    if (isset($_POST['login'])) {
       if (isset($_POST['username']) && isset($_POST['password'])) {
          $username = htmlspecialchars($_POST['username']);
