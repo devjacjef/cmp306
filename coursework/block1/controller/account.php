@@ -14,6 +14,7 @@ class Account
 
    private static function getAllUsers()
    {
+      // Ideally could just get username and id and then check password later with another call to be more secure...
       global $conn;
       $sql = "SELECT * FROM users";
       $result = mysqli_query($conn, $sql);
