@@ -26,13 +26,43 @@ class Account
       return $rows;
    }
 
-   public static function createAccount(string $username, string $password, string $confirmPassword) {}
+   public static function createAccount(string $username, string $password, string $confirmPassword)
+   {
+      global $conn;
+
+      $stmt = $conn->prepare("insert into users (ID, Username, Password) values (?, ?, ?)");
+
+      if (!$stmt) {
+         error_log("Prepare failed: " . $conn->error);
+         return false;
+      }
+
+      // FIXME: Just hacky for a quick test...
+      $ID = 13;
+      $Username = $username;
+      if ($password == $confirmPassword) {
+         $Password = hash('sha256', $password);
+      }
+
+      $stmt->bind_param("iss", $ID, $Username, $Password);
+
+      $result = $stmt->execute();
+
+      if (!$result) {
+         error_log("Execute failed: " . $stmt->error);
+      }
+
+      $stmt->close();
+
+      return $result;
+   }
 
    public static function login(string $username, string $password)
    {
       $users = self::getAllUsers();
       $hash = hash('sha256', $password);
 
+      // Ideally write a query to find the user login by using username and password hash against db
       foreach ($users as $user) {
          if ($username == $user['Username']) {
             if ($hash == $user['Password']) {
@@ -45,6 +75,9 @@ class Account
             }
          }
       }
+
+      header("Location: /cmp306/coursework/block1/views/index.php");
+      exit;
    }
 
    public static function logout()
