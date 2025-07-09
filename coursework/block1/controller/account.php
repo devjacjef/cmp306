@@ -30,7 +30,7 @@ class Account
    {
       global $conn;
 
-      $stmt = $conn->prepare("insert into users (ID, Username, Password) values (?, ?, ?)");
+      $stmt = $conn->prepare("insert into users (Username, Password) values (?, ?)");
 
       if (!$stmt) {
          error_log("Prepare failed: " . $conn->error);
@@ -38,13 +38,12 @@ class Account
       }
 
       // FIXME: Just hacky for a quick test...
-      $ID = 13;
       $Username = $username;
       if ($password == $confirmPassword) {
          $Password = hash('sha256', $password);
       }
 
-      $stmt->bind_param("iss", $ID, $Username, $Password);
+      $stmt->bind_param("ss", $Username, $Password);
 
       $result = $stmt->execute();
 

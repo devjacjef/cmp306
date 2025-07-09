@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?php if ($_SESSION['user'] == null):
+<?php if (empty($_SESSION['user'])):
 ?>
    <form class="my-4 p-4 card container w-25 gap-2" action="" method="POST">
       <div class="form-group">
@@ -39,17 +39,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
       </div>
       <button type="submit" name="login" class="btn btn-primary">Login</button>
-      <button type="submit" name="signup" class="btn btn-primary">Sign up</button>
+      <button type="submit" name="signup" class="btn btn-primary">Sign Up</button>
    </form>
 <?php
 else:
 ?>
    <div class="my-4 p-4 card container w-25 gap-2">
       <div class="">
-         <p>Welcome, <?= $_SESSION['user']['username'] ?></p>
-         <form action="" method="POST">
-            <input type="submit" name="logout" value="Log out" class="btn btn-primary">
-         </form>
+         <div>
+            <p>Welcome, <?= $_SESSION['user']['username'] ?></p>
+         </div>
+         <div class="btn-group gap-2">
+            <?php if ($_SESSION['user']['username'] === 'admin1') ?>
+            <a href="/cmp306/coursework/block1/views/admin/" class="btn btn-primary">Admin Panel</a>
+            <?endif;?>
+            <form action="" method="POST">
+               <input type="submit" name="logout" value="Log out" class="btn btn-primary">
+            </form>
+         </div>
       </div>
    </div>
 <?php endif
