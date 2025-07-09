@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    if (isset($_POST['logout'])) {
       Account::logout();
       header('Location: ' . $_SERVER['PHP_SELF']);
-      exit;;
+      exit;
    }
 
    if (isset($_POST['signup'])) {
