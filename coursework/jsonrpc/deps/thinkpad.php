@@ -55,7 +55,10 @@ class Thinkpad implements JsonSerializable
    public static function fromJson(string $json): self
    {
       $data = json_decode($json, true);
-      return new self($data['id'], $data['model'], $data['description'], $data['imageUrl'], $data['price']);
+
+      echo $json . '<br>';
+      echo $data . '<br>';
+      return new self($data['id'], $data['model'], $data['description'], $data['imageUrl'], $data['price'], $data['stock']);
    }
 
    public function getId()

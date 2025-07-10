@@ -39,9 +39,9 @@ class Thinkpad implements JsonSerializable
    {
       return [
          'id' => $this->id,
-         'name' => $this->model,
-         'grade' => $this->description,
-         'image' => $this->imageUrl,
+         'model' => $this->model,
+         'description' => $this->description,
+         'imageUrl' => $this->imageUrl,
          'price' => $this->price,
          'stock' => $this->stock
       ];

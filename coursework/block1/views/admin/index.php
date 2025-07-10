@@ -18,44 +18,48 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 ?>
 
-<form method="POST" action="">
-
-   <div class="container">
-      <div class="row w-100 justify-content-center align-items-center">
-         <table class="table table-striped">
+<div class="container">
+   <div class="row w-100 justify-content-center align-items-center">
+      <table class="table table-striped">
+         <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Description</th>
+            <th>Image Url</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th></th>
+            <th></th>
+         </tr>
+         <?php
+         $thinkpads = [];
+         $i = 0;
+         foreach ($response as $r):
+            $thinkpads[] = Thinkpad::fromJson($r->resultJson());
+         ?>
             <tr>
-               <th>ID</th>
-               <th>Model</th>
-               <th>Description</th>
-               <th>Image Url</th>
-               <th>Price</th>
-               <th>Stock</th>
-               <th></th>
+               <td><?= $thinkpads[$i]->getId() ?></td>
+               <td><?= $thinkpads[$i]->getModel() ?></td>
+               <td><?= $thinkpads[$i]->getDescription() ?></td>
+               <td><?= $thinkpads[$i]->getImageUrl() ?></td>
+               <td>£<?= $thinkpads[$i]->getPrice() ?></td>
+               <td><?= $thinkpads[$i]->getStock() ?></td>
+
+               <td>
+                  <!-- For edit, could have passed in just the Id and load the model on the other page-->
+                  <a class="btn btn-primary" href="admin-edit.php?id=<?= $thinkpads[$i]->getId() ?>&model=<?= $thinkpads[$i]->getModel() ?>&description=<?= $thinkpads[$i]->getDescription() ?>&imageUrl=<?= $thinkpads[$i]->getImageUrl() ?>&price=<?= $thinkpads[$i]->getPrice() ?>&stock=<?= $thinkpads[$i]->getStock() ?>">Edit</a>
+               </td>
+               <td>
+                  <form action="admin-delete.php" method="POST">
+                     <button type="submit" class="btn btn-danger">Delete</button>
+                     <input type="hidden" id="id" name="id" value="<?= $thinkpads[$i]->getId() ?>">
+                  </form>
+               </td>
             </tr>
-            <?php
-            $thinkpads = [];
-            $i = 0;
-            foreach ($response as $r):
-               $thinkpads[] = Thinkpad::fromJson($r->resultJson());
-            ?>
-               <tr>
-                  <td><?= $thinkpads[$i]->getId() ?></td>
-                  <td><?= $thinkpads[$i]->getModel() ?></td>
-                  <td><?= $thinkpads[$i]->getDescription() ?></td>
-                  <td><?= $thinkpads[$i]->getImageUrl() ?></td>
-                  <td><?= $thinkpads[$i]->getPrice() ?></td>
-                  <td><?= $thinkpads[$i]->getStock() ?></td>
+         <?php $i++;
+         endforeach; ?>
+      </table>
 
-                  <td>
-                     <button type="submit" name="edit" class="btn btn-primary">Edit</button>
-                     <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-                  </td>
-               </tr>
-            <?php $i++;
-            endforeach; ?>
-         </table>
-
-         <button type="submit" name="create" class="w-25 btn btn-primary">Create</button>
-      </div>
+      <a class="w-25 btn btn-primary" href="admin-create.php">Create</a>
    </div>
-</form>
+</div>

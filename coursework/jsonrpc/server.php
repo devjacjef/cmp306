@@ -75,6 +75,7 @@ class RpcServer
       $params = json_encode($r['params']);
 
       $jsonrpc = "2.0";
+
       $id = $r['id'];
 
       switch ($method) {

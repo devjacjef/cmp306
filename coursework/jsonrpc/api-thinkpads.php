@@ -90,18 +90,17 @@ function updateThinkpad($json)
    $stmt->bind_param("sssdii", $Model, $Description, $ImageUrl, $Price, $Stock, $ID);
 
    $result = $stmt->execute();
+
+   return $result;
 }
 
 function deleteThinkpad($id)
 {
    global $conn;
-   $sql = "DELETE FROM thinkpads WHERE ID = ?";
-   $stmt = mysqli_stmt_init($conn);
+   $sql = "DELETE FROM thinkpads WHERE ID=" . $id;
+   $stmt = $conn->prepare($sql);
 
-   mysqli_stmt_prepare($stmt, $sql);
-   mysqli_stmt_bind_param($stmt, 'i', $id);
-
-   $result = mysqli_stmt_execute($stmt);
+   $result = $stmt->execute();
 
    if (!$result) {
       error_log("Execute failed: " . $stmt->error);
