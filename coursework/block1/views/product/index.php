@@ -24,7 +24,7 @@ $thinkpad = Thinkpad::fromJson($response->resultJson());
             <p class="mb-0">£<?= $thinkpad->getPrice() ?></p>
             <?php if ($thinkpad->getStock() > 0): ?>
                <p class="text-success">In stock</p>
-               <button class="btn btn-primary">Buy now</button>
+               <a href="checkout.php?id=<?= $thinkpad->getId() ?>" class="btn btn-primary">Buy now</a>
             <?php else: ?>
                <p class="text-danger">Out of stock</p>
             <?php endif ?>
@@ -32,3 +32,8 @@ $thinkpad = Thinkpad::fromJson($response->resultJson());
       </div>
    </div>
 </div>
+
+<?php
+
+
+?>
