@@ -51,14 +51,13 @@ function getAllThinkpads()
    return json_encode($rows);
 }
 
-function getThinkpadById(int $id)
+function getThinkpadById($id)
 {
    global $conn;
    $stmt = mysqli_stmt_init($conn);
-   $sql = "SELECT * FROM thinkpads WHERE ID= ? LIMIT 1";
+   $sql = "SELECT * FROM thinkpads WHERE ID=" . $id . " LIMIT 1";
 
    mysqli_stmt_prepare($stmt, $sql);
-   mysqli_stmt_bind_param($stmt, 'i', $id);
    mysqli_stmt_execute($stmt);
 
    $result = mysqli_stmt_get_result($stmt);

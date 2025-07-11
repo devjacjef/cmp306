@@ -10,7 +10,7 @@
                      <h5 class="card-title"><?= $t->getModel() ?></h5>
                      <p class="card-text"><?= $t->getDescription() ?>
                      </p>
-                     <a href="#">For more details, click here!</a>
+                     <a href="/cmp306/coursework/block1/views/product/index.php?id=<?= $t->getId() ?>">For more details, click here!</a>
 
                      <?php if ($t->getStock() > 0): ?>
                         <div class="d-flex justify-content-between align-items-center">

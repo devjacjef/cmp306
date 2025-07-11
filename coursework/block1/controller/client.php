@@ -51,20 +51,32 @@ class RpcClient
       return $ch;
    }
 
+
    public function decodeResponse($response)
    {
       $res = json_decode($response);
 
-      $resultItem = json_decode($res->result, true);
-
-      $something = [];
-
-      foreach ($resultItem as $item) {
-         $something[] = new RpcResponse($item, $res->error, $res->id);
+      if ($res == NULL) {
+         return null;
       }
 
-      return $something;
+      $resultItem = json_decode($res->result, true);
+
+      $isAssoc = function (array $arr) {
+         return array_keys($arr) !== range(0, count($arr) - 1);
+      };
+
+      if ($isAssoc($resultItem)) {
+         return new RpcResponse($resultItem, $res->error, $res->id);
+      } else {
+         $something = [];
+         foreach ($resultItem as $item) {
+            $something[] = new RpcResponse($item, $res->error, $res->id);
+         }
+         return $something;
+      }
    }
+
 
 
    public function execute()
