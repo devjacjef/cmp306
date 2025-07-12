@@ -87,4 +87,9 @@ class Thinkpad implements JsonSerializable
    {
       return $this->stock;
    }
+
+   public function decreaseStock()
+   {
+      return $this->stock--;
+   }
 }
