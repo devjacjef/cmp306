@@ -1,4 +1,5 @@
 <?php
+// TODO: Must delete this after hand in
 function getDatabaseConnection()
 {
    //  Database connections 
@@ -16,3 +17,5 @@ function getDatabaseConnection()
    // echo "Connected to MySQL.";
    return $conn;
 }
+
+getDatabaseConnection();

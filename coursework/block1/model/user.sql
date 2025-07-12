@@ -9,4 +9,4 @@ CREATE TABLE `users` (
 );
 
 INSERT INTO `users` (Username, Password)
-VALUES ('admin1', SHA2('password1', 256));
+VALUES ('admin1', SHA2('Password1', 256));
