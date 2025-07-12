@@ -19,7 +19,7 @@
                   </div>
                   <div class="card-footer d-flex justify-content-between bg-light">
                      <!--IMPLEMENT BUTTON CALL THING-->
-                     <a class="btn btn-primary btn-sm">Buy Now</a>
+                     <a href="product/checkout.php?id=<?= $t->getId() ?>" class="btn btn-primary btn-sm">Buy Now</a>
                      <span class="h5 mb-0">Stock: <?= $t->getStock() ?></span>
                   </div>
                <?php else: ?>
