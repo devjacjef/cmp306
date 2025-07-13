@@ -51,7 +51,7 @@ else:
          </div>
          <div class="btn-group gap-2">
             <?php if ($_SESSION['user']['username'] == 'admin1') {
-               echo '<a href="/cmp306/coursework/block1/views/admin/" class="btn btn-primary">Admin Panel</a>';
+               echo '<a href="/cmp306/coursework/block2/views/admin/" class="btn btn-primary">Admin Panel</a>';
             } ?>
             <form action="" method="POST">
                <input type="submit" name="logout" value="Log out" class="btn btn-primary">

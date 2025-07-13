@@ -8,13 +8,13 @@ $request = new RpcRequest("getAllThinkpads", "", "510572");
 $client = new RpcClient($request, "http://127.0.0.1/cmp306/coursework/jsonrpc/");
 $response = $client->execute();
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
-   // TODO: Add all the CUD operations!
-   echo '<pre>';
-   var_dump($_POST);
-   echo '</pre>';
-}
+/* if ($_SERVER['REQUEST_METHOD'] == "POST") { */
+/**/
+/*    // TODO: Add all the CUD operations! */
+/*    echo '<pre>'; */
+/*    var_dump($_POST); */
+/*    echo '</pre>'; */
+/* } */
 
 ?>
 

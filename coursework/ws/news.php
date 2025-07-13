@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require 'connection.php';
 $conn = getDatabaseConnection();
 require 'library.php';
@@ -15,6 +19,9 @@ switch ($request_method) {
          header('Content-Type: text/xml');
          echo $resp;
       } else {
+         $resp = getAllNews();
+         header('Content-Type: text/xml');
+         echo $resp;
       }
       break;
    case 'POST':

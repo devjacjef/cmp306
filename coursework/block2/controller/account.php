@@ -75,7 +75,7 @@ class Account
          }
       }
 
-      header("Location: /cmp306/coursework/block1/views/index.php");
+      header("Location: /cmp306/coursework/block2/views/index.php");
       exit;
    }
 
