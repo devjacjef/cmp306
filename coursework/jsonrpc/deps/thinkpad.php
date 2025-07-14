@@ -35,7 +35,7 @@ class Thinkpad implements JsonSerializable
       echo '<p>' . $this->stock . '</p>';
    }
 
-   public function jsonSerialize(): mixed
+   public function jsonSerialize()
    {
       return [
          'id' => $this->id,
@@ -56,8 +56,8 @@ class Thinkpad implements JsonSerializable
    {
       $data = json_decode($json, true);
 
-      echo $json . '<br>';
-      echo $data . '<br>';
+      // echo $json . '<br>';
+      // echo $data . '<br>';
       return new self($data['id'], $data['model'], $data['description'], $data['imageUrl'], $data['price'], $data['stock']);
    }
 

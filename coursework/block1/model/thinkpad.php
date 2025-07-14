@@ -35,7 +35,7 @@ class Thinkpad implements JsonSerializable
       echo '<p>' . $this->stock . '</p>';
    }
 
-   public function jsonSerialize(): mixed
+   public function jsonSerialize()
    {
       return [
          'id' => $this->id,
@@ -75,7 +75,7 @@ class Thinkpad implements JsonSerializable
 
    public function getImageUrl()
    {
-      return '/cmp306/coursework/block1/images/' . $this->imageUrl;
+      return '/~2207061/cmp306/coursework/block1/images/' . $this->imageUrl;
    }
 
    public function getPrice()

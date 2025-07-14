@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
    $request = new RpcRequest("createThinkpad", $thinkpad, "510572");
 
-   $client = new RpcClient($request, "http://localhost/cmp306/coursework/jsonrpc/");
+   $client = new RpcClient($request, "https:/mayar.abertay.ac.uk/~2207061/cmp306/coursework/jsonrpc/");
 
    $client->execute();
 

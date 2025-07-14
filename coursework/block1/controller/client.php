@@ -54,15 +54,20 @@ class RpcClient
 
    public function decodeResponse($response)
    {
-      $res = json_decode($response);
+	   $res = json_decode($response);
 
       if ($res == NULL) {
          return null;
       }
 
-      $resultItem = json_decode($res->result, true);
+	   $resultItem = json_decode($res->result, true);
 
-      $isAssoc = function (array $arr) {
+	   if ($resultItem == NULL)
+	   {
+	  		return NULL;
+	   }
+
+      $isAssoc = function ($arr) {
          return array_keys($arr) !== range(0, count($arr) - 1);
       };
 
@@ -83,6 +88,8 @@ class RpcClient
    {
       $ch = $this->setup();
       $response = curl_exec($ch);
+
+		var_dump($response);
 
       if ($response === false) {
          return 'cURL Error: ' . curl_error($ch);

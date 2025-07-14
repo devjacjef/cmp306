@@ -19,7 +19,7 @@ class RpcResponse implements JsonSerializable
         $this->id = $id;
     }
 
-    public function jsonSerialize(): mixed
+    public function jsonSerialize()
     {
         return [
             'jsonrpc' => $this->jsonrpc,

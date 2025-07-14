@@ -31,7 +31,7 @@ class RpcRequest implements JsonSerializable
    }
 
    // Return request as json
-   public function jsonSerialize(): mixed
+   public function jsonSerialize()
    {
       return [
          'jsonrpc' => $this->jsonrpc,

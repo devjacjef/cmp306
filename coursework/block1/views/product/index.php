@@ -5,7 +5,7 @@ require __DIR__ . '/../../controller/client.php';
 
 $request = new RpcRequest("getThinkpadById", $_GET['id'], "510572");
 
-$client = new RpcClient($request, "http://localhost/cmp306/coursework/jsonrpc/");
+//$client = new RpcClient($request, "http://localhost/cmp306/coursework/jsonrpc/");
 
 $response = $client->execute();
 

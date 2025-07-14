@@ -11,7 +11,7 @@ function createThinkpad($json)
 
    $thinkpad = Thinkpad::fromJson($json);
 
-   $stmt = $conn->prepare("insert into thinkpads (ID, Model, Description, ImageUrl, Price, Stock) values (?, ?, ?, ?, ?, ?)");
+   $stmt = $conn->prepare("insert into thinkpads (Model, Description, ImageUrl, Price, Stock) values (?, ?, ?, ?, ?)");
 
    if (!$stmt) {
       error_log("Prepare failed: " . $conn->error);
@@ -25,7 +25,7 @@ function createThinkpad($json)
    $Price = $thinkpad->getPrice();
    $Stock = $thinkpad->getStock();
 
-   $stmt->bind_param("isssdi", $ID, $Model, $Description, $ImageUrl, $Price, $Stock);
+   $stmt->bind_param("sssdi", $Model, $Description, $ImageUrl, $Price, $Stock);
 
    $result = $stmt->execute();
 
@@ -41,7 +41,7 @@ function createThinkpad($json)
 function getAllThinkpads()
 {
    global $conn;
-   $sql = "SELECT * FROM thinkpads LIMIT 6";
+   $sql = "SELECT * FROM thinkpads";
    $result = mysqli_query($conn, $sql);
    $rows = array();
    while ($r = mysqli_fetch_assoc($result)) {
