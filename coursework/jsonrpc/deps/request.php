@@ -20,7 +20,7 @@ class RpcRequest implements JsonSerializable
     }
 
     // Return the object as associative array
-    public function assoc(): mixed
+    public function assoc()
     {
         return [
             'jsonrpc' => $this->jsonrpc,
@@ -31,7 +31,7 @@ class RpcRequest implements JsonSerializable
     }
 
     // Return request as json
-    public function jsonSerialize(): mixed
+    public function jsonSerialize()
     {
         return [
             'jsonrpc' => $this->jsonrpc,

@@ -5,11 +5,10 @@ require __DIR__ . '/../../controller/client.php';
 
 // data for the table
 $request = new RpcRequest("getAllThinkpads", "", "510572");
-$client = new RpcClient($request, "http://127.0.0.1/cmp306/coursework/jsonrpc/");
+$client = new RpcClient($request, "https://mayar.abertay.ac.uk/~2207061/cmp306/coursework/jsonrpc/");
 $response = $client->execute();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
    // TODO: Add all the CUD operations!
    echo '<pre>';
    var_dump($_POST);

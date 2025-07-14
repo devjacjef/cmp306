@@ -2,10 +2,10 @@
 function getDatabaseConnection()
 {
    //  Database connections 
-   $servername = "localhost";
-   $username = "root";
-   $password = "hotdog";
-   $database = "university";
+   $servername = "lochnagar.abertay.ac.uk";
+   $username = "sql2207061";
+   $password = "body-engaged-ruled-inputs";
+   $database = "sql2207061";
    $conn = mysqli_connect($servername, $username, $password, $database);
    // Check connection
    if (mysqli_connect_errno()) {

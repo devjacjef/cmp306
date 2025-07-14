@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
    $request = new RpcRequest("updateThinkpad", $thinkpad, "510572");
 
-   $client = new RpcClient($request, "http://localhost/cmp306/coursework/jsonrpc/");
+      $client = new RpcClient($request, "https://mayar.abertay.ac.uk/~2207061/cmp306/coursework/jsonrpc/");
 
    $client->execute();
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    }
 
    if (isset($_POST['save-exit'])) {
-      header('Location: /cmp306/coursework/block1/views/admin/');
+      header('Location: /~2207061/cmp306/coursework/block1/views/admin');
       exit;
    }
 }

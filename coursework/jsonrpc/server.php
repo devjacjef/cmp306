@@ -85,7 +85,7 @@ class RpcServer
          case "getThinkpadById":
             return new RpcResponse(getThinkpadById($params), null, $id);
             break;
-         case "createThinkpad":
+		 case "createThinkpad":
             return new RpcResponse(createThinkpad($params), null, $id);
             break;
          case "deleteThinkpad":
