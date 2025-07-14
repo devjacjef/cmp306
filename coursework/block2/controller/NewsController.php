@@ -26,7 +26,7 @@ class NewsController
 
    public function getAllNews()
    {
-      $url = "http://127.0.0.1/cmp306/coursework/ws/news.php";
+      $url = "https://mayar.abertay.ac.uk/~2207061/cmp306/coursework/ws/news.php";
 
       $curl = curl_init($url);
       curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");

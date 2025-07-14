@@ -13,22 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          echo ' Passwords did not match.';
       }
    }
-
-   echo '<pre>';
-   var_dump($_POST);
-   echo '</pre>';
-
-
-   /* if (isset($_POST['login'])) { */
-   /*    if (isset($_POST['username']) && isset($_POST['password'])) { */
-   /*       $username = htmlspecialchars($_POST['username']); */
-   /*       $password = htmlspecialchars($_POST['password']); */
-   /**/
-   /*       Account::login($username, $password); */
-   /*    } else { */
-   /*       echo 'Username and password are required fields.'; */
-   /*    } */
-   /* } */
 }
 
 ?>
