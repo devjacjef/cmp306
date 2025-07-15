@@ -38,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
          <input type="text" class="form-control" id="body" name="body" value="<?= $news->body ?>">
       </div>
       <input type="hidden" id="id" name="id" value="<?= $id ?>">
-      <button type="submit" name="save" class="btn btn-primary">Create</button>
-      <button type="submit" name="save-exit" class="btn btn-primary">Create</button>
+      <button type="submit" name="save" class="btn btn-primary">Save</button>
+      <button type="submit" name="save-exit" class="btn btn-primary">Save and Exit</button>
    </form>
 </div>
 
