@@ -25,10 +25,21 @@ switch ($request_method) {
       }
       break;
    case 'POST':
+      var_dump($xml);
+      $xml = file_get_contents('php://input');
+      $resp = insertNews($xml);
+      echo $resp;
       break;
    case 'PUT':
+      $id = $_GET['id'];
+      $xml = file_get_contents('php://input');
+      $resp = updateNews($id, $xml);
+      echo $resp;
       break;
    case 'DELETE':
+      $id = $_GET['id'];
+      $resp = deleteNews($id);
+      echo $resp;
       break;
    default:
       header("HTTP/1.0 405 Method Not Allowed");
