@@ -55,7 +55,7 @@ class NewsController
 
    public function createNews($title, $body)
    {
-      $url = "http://localhost/cmp306/coursework/ws/news.php";
+      $url = "https://mayar.abertay.ac.uk/~2207061/cmp306/coursework/ws/news.php";
 
       $data = $this->convertToXML($title, $body);
 
@@ -85,7 +85,7 @@ class NewsController
    }
    public function updateNews($id, $title, $body)
    {
-      $url = "http://localhost/cmp306/coursework/ws/news.php/" . $id;
+      $url = "https://mayar.abertay.ac.uk/~2207061/cmp306/coursework/ws/news.php/" . $id;
 
       $data = $this->convertToXML($title, $body);
 
@@ -118,7 +118,7 @@ class NewsController
 
    public function deleteNews($id)
    {
-      $url = "http://localhost/cmp306/coursework/ws/news.php/" . $id;
+      $url = "https://mayar.abertay.ac.uk/~2207061/cmp306/coursework/ws/news.php/" . $id;
 
       $curl = curl_init($url);
       curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");

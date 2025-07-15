@@ -9,6 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $controller->deleteNews($_POST['id']);
    }
 
-   header('Location: /cmp306/coursework/block2/views/admin/');
+   header('Location: /~2207061/cmp306/coursework/block2/views/admin/');
    exit;
 }

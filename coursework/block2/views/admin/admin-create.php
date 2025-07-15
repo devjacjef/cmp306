@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
    $news = $controller->createNews($title, $body);
 
-   header('Location: /cmp306/coursework/block2/views/admin/');
+   header('Location: /~2207061/cmp306/coursework/block2/views/admin/');
    exit;
 } else if ($_SERVER['REQUEST_METHOD'] == "GET") {
    $id = isset($_GET['id']) ? $_GET['id'] : '';

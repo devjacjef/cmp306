@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
    if (isset($_POST['save'])) {
       echo 'Changes have been saved.';
    } else if (isset($_POST['save-exit'])) {
-      header('Location: /cmp306/coursework/block2/views/admin/');
+      header('Location: /~2207061/cmp306/coursework/block2/views/admin/');
       exit;
    }
 } else if ($_SERVER['REQUEST_METHOD'] == "GET") {
